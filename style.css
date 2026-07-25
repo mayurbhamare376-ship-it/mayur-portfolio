@@ -598,4 +598,226 @@ footer {
         margin-left: 15px;
         flex-shrink: 0;
     }
+}/* =========================
+   Premium Portfolio UI
+========================= */
+
+:root {
+    --primary: #38bdf8;
+    --secondary: #8b5cf6;
+    --dark: #050816;
+    --card: rgba(15, 23, 42, 0.65);
+    --border: rgba(255, 255, 255, 0.12);
+    --text: #f8fafc;
+    --muted: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text);
+    background:
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.18), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.18), transparent 30%),
+        linear-gradient(135deg, #020617, #0f172a, #020617);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Animated background glow */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    z-index: -1;
+    animation: floatingGlow 8s ease-in-out infinite alternate;
+}
+
+body::before {
+    background: var(--primary);
+    top: 5%;
+    left: -100px;
+}
+
+body::after {
+    background: var(--secondary);
+    bottom: 5%;
+    right: -100px;
+    animation-delay: 2s;
+}
+
+@keyframes floatingGlow {
+    from {
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        transform: translateY(60px) scale(1.15);
+    }
+}
+
+/* Navbar glass effect */
+
+header {
+    background: rgba(2, 6, 23, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar a {
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.navbar a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+}
+
+/* Hero heading */
+
+.home-content h1 span {
+    color: transparent;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+}
+
+.home-content h2 {
+    color: var(--muted);
+}
+
+.home-content p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+/* LinkedIn and GitHub buttons */
+
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 135px;
+    padding: 13px 26px;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.linkedin-btn {
+    background: linear-gradient(135deg, #0077b5, #38bdf8);
+}
+
+.github-btn {
+    background: linear-gradient(135deg, #111827, #8b5cf6);
+}
+
+.social-btn:hover {
+    transform: translateY(-5px) scale(1.03);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 15px 35px rgba(56, 189, 248, 0.18),
+        0 0 22px rgba(139, 92, 246, 0.25);
+}
+
+/* Glassmorphism sections */
+
+#about,
+#skills,
+#projects,
+#contact {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    transition: transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+#about:hover,
+#skills:hover,
+#projects:hover,
+#contact:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.35);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(56, 189, 248, 0.08);
+}
+
+/* Profile image glow */
+
+.image-border,
+.home-image,
+.profile-image {
+    filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.35));
+}
+
+.image-border img,
+.home-image img,
+.profile-image img {
+    transition: transform 0.4s ease,
+                filter 0.4s ease;
+}
+
+.image-border img:hover,
+.home-image img:hover,
+.profile-image img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+/* Selection colour */
+
+::selection {
+    background: var(--secondary);
+    color: white;
+}
+
+/* Mobile responsive */
+
+@media screen and (max-width: 768px) {
+    .social-buttons {
+        justify-content: center;
+    }
+
+    .social-btn {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    #about,
+    #skills,
+    #projects,
+    #contact {
+        border-radius: 18px;
+    }
 }
